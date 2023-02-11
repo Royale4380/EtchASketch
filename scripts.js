@@ -1,12 +1,12 @@
 
 
 const gridContainer = document.querySelector('.grid-container');
-let columnNumber = 16;
-let squareSize = 320/columnNumber;
+let columnNumber = 64;
+let squareSize = Math.round(960/columnNumber);
 
 let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
 gridContainer.setAttribute('style', columnStyle)
-buildGrid(256);
+buildGrid(4096);
 
 // let box1 = document.createElement("div");
 // box1.classList.add("grid-item");
