@@ -1,0 +1,23 @@
+
+
+.header{
+    text-align: center;
+}
+
+.grid-container{
+    display: grid;
+    /* grid-template-columns: repeat(16, 1fr);  */
+    margin: auto;
+    max-width: 320px;
+    max-height: 320px;
+
+    
+}
+
+.grid-item{
+    border: 1px solid black;
+    text-align: center;
+    width:20px;
+    height: 20px;
+   
+}
