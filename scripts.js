@@ -1,12 +1,44 @@
 
 
 const gridContainer = document.querySelector('.grid-container');
-let columnNumber = 64;
+let columnNumber = 100;
 let squareSize = Math.round(960/columnNumber);
+let gridSize = columnNumber * columnNumber;
+let isHoverOn = false;
 
 let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
 gridContainer.setAttribute('style', columnStyle)
-buildGrid(4096);
+buildGrid(gridSize);
+
+// gridContainer.addEventListener('mouseover', function(e){
+//     let target = e.target;
+//     if (target.classList == "grid-item"){
+//         target.setAttribute('style', 'background-color: blue');
+//     }
+
+// });
+
+gridContainer.addEventListener('click', function(e){
+    let target = e.target;
+    if(target.classList == "grid-item"){
+        if(isHoverOn){
+            gridContainer.removeEventListener('mouseover',handler);
+            isHoverOn = false;
+        }else{
+            gridContainer.addEventListener('mouseover', handler);
+        }
+    }
+
+});
+
+var handler = function(e){
+    let target = e.target;
+    if (target.classList == "grid-item"){
+        target.setAttribute('style', 'background-color: blue');
+        isHoverOn = true;
+    }
+};
+
 
 // let box1 = document.createElement("div");
 // box1.classList.add("grid-item");
@@ -37,6 +69,9 @@ function buildGrid(numOfSquares){
         let squareStyle = (`width: ${squareSize}; height: ${squareSize}`);
         square.setAttribute('style', squareStyle);
         gridContainer.appendChild(square);
-
+       
     }
 }
+
+
+

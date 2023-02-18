@@ -2,6 +2,8 @@
 
 .header{
     text-align: center;
+    font-size: 50;
+    font-weight: 300;
 }
 
 .grid-container{
@@ -16,7 +18,7 @@
 }
 
 .grid-item{
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     /* width: 60px;
     height: 60px; */
    
