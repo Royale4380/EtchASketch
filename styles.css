@@ -18,8 +18,24 @@
 }
 
 .grid-item{
-    /* border: 1px solid grey; */
+    border: 1px solid grey;
     /* width: 60px;
     height: 60px; */
    
+}
+
+.btnContainer{
+    display: flex;
+
+}
+
+#btn1{
+    margin-left: 200px;
+    height: 30px;
+    border-radius: 15%;
+}
+
+#btn1:hover {
+    font-weight: bold;
+    background-color: gray;
 }

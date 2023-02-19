@@ -1,22 +1,26 @@
 
 
 const gridContainer = document.querySelector('.grid-container');
-let columnNumber = 100;
-let squareSize = Math.round(960/columnNumber);
-let gridSize = columnNumber * columnNumber;
-let isHoverOn = false;
+// let columnNumber = 100;
+// let squareSize = Math.round(960/columnNumber);
+// let gridSize = columnNumber * columnNumber;
+ let isHoverOn = false;
 
-let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
-gridContainer.setAttribute('style', columnStyle)
-buildGrid(gridSize);
+// let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
+// gridContainer.setAttribute('style', columnStyle)
+// buildGrid(gridSize);
 
-// gridContainer.addEventListener('mouseover', function(e){
-//     let target = e.target;
-//     if (target.classList == "grid-item"){
-//         target.setAttribute('style', 'background-color: blue');
-//     }
+setGridRowsCols(50);
 
-// });
+function setGridRowsCols(colNumber){
+    let columnNumber = colNumber;
+    let squareSize = Math.round(960/columnNumber);
+    let gridSize = columnNumber * columnNumber;
+    let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
+    gridContainer.setAttribute('style', columnStyle)
+    buildGrid(gridSize, squareSize);
+
+}
 
 gridContainer.addEventListener('click', function(e){
     let target = e.target;
@@ -39,30 +43,48 @@ var handler = function(e){
     }
 };
 
+function promptUser(){
+    let numResponse = 0;
+    while(true){
+        let response = prompt('Enter the number of grid rows (Max 100):')
+        if (isNaN(response)){
+            response = prompt('Enter a valid number (max 100)');
+        }else{
+            numResponse = parseInt(response);
+            if(numResponse > 100){
+                response = prompt('Enter a valid number (max 100)');
+            }else{
+                break;
+            }
+        }
 
-// let box1 = document.createElement("div");
-// box1.classList.add("grid-item");
-// box1.textContent = "1";
-
-// let box2 = document.createElement("div");
-// box2.classList.add("grid-item");
-// box2.textContent = "2";
-
-// let box3 = document.createElement("div");
-// box3.classList.add("grid-item");
-// box3.textContent = "3";
-
-// let box4 = document.createElement("div");
-// box4.classList.add("grid-item");
-// box4.textContent = "4";
-
-// gridContainer.appendChild(box1);
-// gridContainer.appendChild(box2);
-// gridContainer.appendChild(box3);
-// gridContainer.appendChild(box4);
+    }
+   
+    isHoverOn = false;
+    clearGrid();
+    setGridRowsCols(numResponse);
+    
+}
 
 
-function buildGrid(numOfSquares){
+function clearGrid(){
+
+    while (gridContainer.hasChildNodes){
+        let currentChild = gridContainer.lastChild;
+        if(currentChild !== null){
+            if(currentChild.classList =='grid-item'){
+                gridContainer.removeChild(gridContainer.lastChild);
+            }else{
+                break;
+            }
+        }else{
+            break;
+        }
+    }
+
+}
+
+function buildGrid(numOfSquares, squareSize){
     for(let i = 0; i<numOfSquares; i++){
         let square = document.createElement('div');
         square.classList.add('grid-item');
