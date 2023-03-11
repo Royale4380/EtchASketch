@@ -1,15 +1,134 @@
 
 
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+.wrapper{
+    max-width: 1400px;
+    /*this moved the controls towards center*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{
+     background-image: url('denim.webp');
+
+}
+
 .header{
     text-align: center;
-    font-size: 50;
+    font-size: 32pt;
+    color: #ffffff;
     font-weight: 300;
+    font-family: 'sans-serif';
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+   
 }
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+
+
+}
+
+.grid-controls{
+
+     width: 300px;
+     height: 400px;
+     padding: 30px;
+     border-radius: 4px;
+     
+     background-color: rgb(94, 98, 104);
+}
+
+.color-container{
+    font-family: 'sans-serif';
+    font-weight: 500;
+    font-size: 14pt;
+    display: flex;
+    position: relative;
+    color:#ffffff;
+    
+
+}
+
+.color-box{
+    height: 36px;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1pt solid white;
+    width: 35%;
+    margin-bottom: 10px;
+
+}
+
+.color-container span{
+    margin-left: 9px;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+input[type="color"]{
+    display: block;
+    border: none;
+    outline: none;
+    height: 200%;
+    width: 200%;
+    margin-bottom: 4px;
+    background-color: rgba(0,0,0,0);
+    transform: translateX(-10px) translateY(-10px);
+    
+}
+
+button{
+    display: block;
+    color:black;
+    font-weight: 500;
+    font-family: 'sans-serif';
+    background-color: white;
+    font-size: 14pt;
+    width: 100%;
+    border: 1pt solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5%;
+
+}
+
+.slider-container{
+    position: relative;
+    width: 100%;
+}
+
+.grid-size-label{
+    font-family: 'sans-serif';
+    font-weight: 500;
+    text-align: center;
+    color:#ffffff;
+    margin-top: 5px;
+}
+
+input[type="range"]{
+     width: 100%;
+}
+
 
 .grid-container{
     display: grid;
     /* grid-template-columns: repeat(16, 1fr);  */
-    border: 1px solid grey;
+    background-color: rgb(230, 229, 229);
+    border-radius: 1%;
+    border: 5pt solid rgb(94, 98, 104);
     margin: auto;
     width: 976px;
     height: 976px;
@@ -18,7 +137,10 @@
 }
 
 .grid-item{
-    border: 1px solid grey;
+   /* border: 1px solid grey;*/
+    background-color: rgb(230, 229, 229);
+    border-radius: 15%;
+    
     /* width: 60px;
     height: 60px; */
    
@@ -39,3 +161,4 @@
     font-weight: bold;
     background-color: gray;
 }
+

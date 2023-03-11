@@ -5,10 +5,21 @@ const gridContainer = document.querySelector('.grid-container');
 // let squareSize = Math.round(960/columnNumber);
 // let gridSize = columnNumber * columnNumber;
  let isHoverOn = false;
+ let eraserActive = false;
+ let squareColor = "#080808";
+ let isMouseDownOn = false;
 
 // let columnStyle = (`grid-template-columns: repeat(${columnNumber}, 1fr)`)
 // gridContainer.setAttribute('style', columnStyle)
 // buildGrid(gridSize);
+
+
+const color = document.querySelector("#color-picker");
+color.addEventListener("input", ()=>{updateColor(event)});
+
+function updateColor(e){
+    squareColor = e.target.value;
+}
 
 setGridRowsCols(50);
 
@@ -22,23 +33,36 @@ function setGridRowsCols(colNumber){
 
 }
 
-gridContainer.addEventListener('click', function(e){
+gridContainer.addEventListener('mousedown', function(e){
     let target = e.target;
     if(target.classList == "grid-item"){
-        if(isHoverOn){
-            gridContainer.removeEventListener('mouseover',handler);
-            isHoverOn = false;
-        }else{
-            gridContainer.addEventListener('mouseover', handler);
-        }
+        // if(isHoverOn){
+        //     gridContainer.removeEventListener('mouseover',handler);
+        //     isHoverOn = false;
+        // }else{
+        //     gridContainer.addEventListener('mouseover', handler);
+        // }
+        gridContainer.addEventListener('mouseover', handler);
     }
 
+});
+
+gridContainer.addEventListener('mouseup', function(e){
+    let target = e.target;
+    if(target.classList == "grid-item"){
+        
+        gridContainer.removeEventListener('mouseover', handler);  
+    }
 });
 
 var handler = function(e){
     let target = e.target;
     if (target.classList == "grid-item"){
-        target.setAttribute('style', 'background-color: blue');
+        if(!eraserActive){
+            target.setAttribute('style', 'background-color: ' + squareColor + ';');
+        }else{
+            target.setAttribute('style', 'background-color: rgb(230, 229, 229);');
+        }
         isHoverOn = true;
     }
 };
@@ -64,6 +88,12 @@ function promptUser(){
     clearGrid();
     setGridRowsCols(numResponse);
     
+}
+
+function clearGridColor(){
+   const childrenArray =  Array.from(gridContainer.children);
+   childrenArray.forEach((item) => {item.setAttribute("style","background-color: rgb(230, 229, 229)")}); 
+
 }
 
 
@@ -94,6 +124,19 @@ function buildGrid(numOfSquares, squareSize){
        
     }
 }
+
+function eraserToggle(){
+    let btnEraser = document.querySelector("#btn-eraser");
+    if(!eraserActive){
+        eraserActive = true;
+        btnEraser.textContent = "Eraser Off"
+    }else{
+        eraserActive = false;
+        btnEraser.textContent = "Eraser On"
+    }
+    console.log(eraserActive);
+}
+
 
 
 

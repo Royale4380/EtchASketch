@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch-O-Matic</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <header class = 'header'>Etch-A-Sketch</header>
-    <div class = 'btnContainer'>
-        <button type ='button' id = 'btn1' onclick="promptUser()">Change Grid</button>
+    <div class="wrapper">
+        <div class = 'header'>
+            <p>Sketch-O-Matic</p>
+        </div>
+        <div class="main">
+            <div class="grid-controls">
+                <div class="color-container">
+                    <div class="color-box">
+                        <input type="color" id="color-picker">
+                    </div>
+                    <span>Choose Color</span>
+                </div>
+                <button id="btn-eraser" onclick="eraserToggle()">Eraser On</button>
+                <button id="btn-clear" onclick="clearGridColor()">Clear Grid</button>
+                <div class="slider-container">
+                    <input type="range" value="50" min="1" max="100" id="grid-slider"
+                    onmousemove="rangeSliderValue(this.value)" onchange="rangeSlider(this.value)">
+                </div>
+                <p class="grid-size-label">Grid Size: <span id="slider-value">50</span> x <span id="slider-value">50</span></p>
+            </div>
+            <div class='grid-container'></div> 
+
+
+        </div>
+
+        
     </div>
-    <div class='grid-container'></div> 
 </body>
 </html>
