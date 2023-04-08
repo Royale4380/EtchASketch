@@ -33,6 +33,19 @@ function setGridRowsCols(colNumber){
 
 }
 
+function processSliderChange(colNumber){
+    let labelValue1 = document.getElementById('slider-value1');
+    let labelValue2 = document.getElementById('slider-value2');
+    labelValue1.textContent=colNumber;
+    labelValue2.textContent=colNumber;
+   
+   
+    clearGrid();
+    setGridRowsCols(colNumber);
+    
+
+};
+
 gridContainer.addEventListener('mousedown', function(e){
     let target = e.target;
     if(target.classList == "grid-item"){
@@ -67,28 +80,6 @@ var handler = function(e){
     }
 };
 
-function promptUser(){
-    let numResponse = 0;
-    while(true){
-        let response = prompt('Enter the number of grid rows (Max 100):')
-        if (isNaN(response)){
-            response = prompt('Enter a valid number (max 100)');
-        }else{
-            numResponse = parseInt(response);
-            if(numResponse > 100){
-                response = prompt('Enter a valid number (max 100)');
-            }else{
-                break;
-            }
-        }
-
-    }
-   
-    isHoverOn = false;
-    clearGrid();
-    setGridRowsCols(numResponse);
-    
-}
 
 function clearGridColor(){
    const childrenArray =  Array.from(gridContainer.children);
@@ -120,6 +111,7 @@ function buildGrid(numOfSquares, squareSize){
         square.classList.add('grid-item');
         let squareStyle = (`width: ${squareSize}; height: ${squareSize}`);
         square.setAttribute('style', squareStyle);
+        square.setAttribute('draggable', false);
         gridContainer.appendChild(square);
        
     }
@@ -130,9 +122,11 @@ function eraserToggle(){
     if(!eraserActive){
         eraserActive = true;
         btnEraser.textContent = "Eraser Off"
+        btnEraser.setAttribute('style', 'font-weight: normal')
     }else{
         eraserActive = false;
         btnEraser.textContent = "Eraser On"
+        btnEraser.setAttribute('style', 'font-weight: bold')
     }
     console.log(eraserActive);
 }

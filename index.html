@@ -26,9 +26,9 @@
                 <button id="btn-clear" onclick="clearGridColor()">Clear Grid</button>
                 <div class="slider-container">
                     <input type="range" value="50" min="1" max="100" id="grid-slider"
-                    onmousemove="rangeSliderValue(this.value)" onchange="rangeSlider(this.value)">
+                    onchange="processSliderChange(this.value)">
                 </div>
-                <p class="grid-size-label">Grid Size: <span id="slider-value">50</span> x <span id="slider-value">50</span></p>
+                <p class="grid-size-label">Grid Size: <span id="slider-value1">50</span> x <span id="slider-value2">50</span></p>
             </div>
             <div class='grid-container'></div> 
 

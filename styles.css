@@ -102,8 +102,15 @@ button{
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5%;
+    transition-duration: 0.4s;
 
 }
+
+button:hover{
+    font-weight: bold;
+    background-color: lightgray;
+}
+
 
 .slider-container{
     position: relative;
@@ -132,6 +139,7 @@ input[type="range"]{
     margin: auto;
     width: 976px;
     height: 976px;
+    
 
     
 }
@@ -140,6 +148,7 @@ input[type="range"]{
    /* border: 1px solid grey;*/
     background-color: rgb(230, 229, 229);
     border-radius: 15%;
+    border: 1pt solid white;
     
     /* width: 60px;
     height: 60px; */
